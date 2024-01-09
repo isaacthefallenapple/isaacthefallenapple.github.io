@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Mirrorshades</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <div id="shades">
+        <img
+          id="morpheus"
+          src="assets/morpheus.png"
+          alt="Morpheus, offering you the red or blue pill."
+        />
+        <div class="playback-container left">
+          <video class="playback" autoplay></video>
+        </div>
+        <div class="playback-container right">
+          <video class="playback" autoplay></video>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script>
+    window.onload = async () => {
+      const playbacks = document.querySelectorAll(".playback");
+
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+        });
+        for (let playback of playbacks) {
+          playback.srcObject = stream;
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+  </script>
+</html>
