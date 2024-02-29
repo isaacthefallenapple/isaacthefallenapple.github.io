@@ -23,15 +23,11 @@ main > * {
 }
 
 #shades {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 40% 1fr;
-  grid-template-areas:
-    "left right"
-    "____ _____";
   aspect-ratio: 1;
   height: min(1200px, 80vmin);
   width: min(1200px, 80vmin);
+
+  position: relative;
 }
 
 img#morpheus {
@@ -39,39 +35,31 @@ img#morpheus {
   max-width: 100%;
   max-height: 100%;
 
-  place-self: start stretch;
-
-  grid-area: 1 / 1 / 3 / 3;
+  position: absolute;
+  inset: 0;
 }
 
 .playback-container {
-  height: 100%;
-  width: 100%;
-
   overflow: clip;
+  position: absolute;
+}
 
-  position: relative;
+.playback-container.left {
+  width: 42%;
+  height: 35%;
+
+  top: 3%;
+}
+
+.playback-container.right {
+  width: 39.5%;
+  height: 34%;
+
+  top: 1.1%;
+  right: 0;
 }
 
 .playback {
   height: 100%;
   position: absolute;
-}
-
-.right .playback {
-  left: 7%;
-  bottom: 3%;
-}
-
-.left .playback {
-  right: 8%;
-  top: 1%;
-}
-
-.right {
-  grid-area: right;
-}
-
-.left {
-  grid-area: left;
 }
