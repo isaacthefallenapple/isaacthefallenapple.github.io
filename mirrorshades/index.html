@@ -27,18 +27,33 @@
     window.onload = async () => {
       const playbacks = document.querySelectorAll(".playback");
 
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: {
-            facingMode: { ideal: "user" },
+      let dimensions;
+      const orientation = screen.orientation.type;
+      switch (orientation) {
+        case "portrait-primary":
+        case "portrait-secondary":
+          dimensions = {
+            width: 420,
+            height: 505,
+          };
+          break;
+        default:
+          dimensions = {
             width: 505,
             height: 420,
-          },
-        });
+          };
+          break;
+      }
+      const constraints = {
+        video: {
+          facingMode: { ideal: "user" },
+          ...dimensions,
+        },
+      };
+
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia(constraints);
         const track = stream.getVideoTracks()[0];
-        const constraints = track.getConstraints();
-        console.log(constraints);
-        console.log(`${constraints.width}x${constraints.height}`);
         for (let playback of playbacks) {
           playback.srcObject = stream;
         }
