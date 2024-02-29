@@ -29,8 +29,16 @@
 
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
-          video: true,
+          video: {
+            facingMode: { ideal: "user" },
+            width: 505,
+            height: 420,
+          },
         });
+        const track = stream.getVideoTracks()[0];
+        const constraints = track.getConstraints();
+        console.log(constraints);
+        console.log(`${constraints.width}x${constraints.height}`);
         for (let playback of playbacks) {
           playback.srcObject = stream;
         }
