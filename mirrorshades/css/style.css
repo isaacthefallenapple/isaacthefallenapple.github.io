@@ -44,11 +44,26 @@ img#morpheus {
   position: absolute;
 }
 
+.playback-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.playback-container.left::after {
+  background-color: color-mix(in srgb, red 12%, transparent);
+}
+
+.playback-container.right::after {
+  background-color: color-mix(in srgb, blue 10%, transparent);
+}
+
 .playback-container.left {
   width: 42%;
-  height: 35%;
+  height: 36%;
 
-  top: 3%;
+  top: 2.9%;
 }
 
 .playback-container.right {
@@ -61,5 +76,5 @@ img#morpheus {
 
 .playback {
   height: 100%;
-  position: absolute;
+  /* position: absolute; */
 }
