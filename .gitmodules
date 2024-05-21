@@ -1,0 +1,3 @@
+[submodule "sniester"]
+	path = sniester
+	url = ../sniester
