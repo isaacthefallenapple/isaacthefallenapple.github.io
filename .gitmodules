@@ -1,3 +1,5 @@
 [submodule "sniester"]
 	path = sniester
 	url = ../sniester
+[submodule "submodulename"]
+	branch = main
