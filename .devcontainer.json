@@ -2,7 +2,7 @@
   "customizations": {
     "codespaces": {
       "repositories": {
-        "isaacthefallenapple/sniedter": {
+        "isaacthefallenapple/sniester": {
           "permissions": "read-all"
         }
       }
